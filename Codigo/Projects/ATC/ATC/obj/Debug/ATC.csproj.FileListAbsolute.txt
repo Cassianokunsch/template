@@ -1,0 +1,6 @@
+c:\users\cassiano kunsch\documents\visual studio 2017\Projects\ATC\ATC\obj\Debug\ATC.csprojResolveAssemblyReference.cache
+c:\users\cassiano kunsch\documents\visual studio 2017\Projects\ATC\ATC\bin\Debug\ATC.exe.config
+c:\users\cassiano kunsch\documents\visual studio 2017\Projects\ATC\ATC\bin\Debug\ATC.exe
+c:\users\cassiano kunsch\documents\visual studio 2017\Projects\ATC\ATC\bin\Debug\ATC.pdb
+c:\users\cassiano kunsch\documents\visual studio 2017\Projects\ATC\ATC\obj\Debug\ATC.exe
+c:\users\cassiano kunsch\documents\visual studio 2017\Projects\ATC\ATC\obj\Debug\ATC.pdb

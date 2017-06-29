@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDATCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADICIONA">
+    <Key>
+      <PropertyRef Name="codAtividade" />
+      <PropertyRef Name="codPessoa" />
+      <PropertyRef Name="codCat" />
+    </Key>
+    <Property Name="codAtividade" Type="Int32" Nullable="false" />
+    <Property Name="codPessoa" Type="Int32" Nullable="false" />
+    <Property Name="codCat" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ALUNO">
+    <Key>
+      <PropertyRef Name="codAluno" />
+    </Key>
+    <Property Name="dtConclusao" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="creditos" Type="Int32" />
+    <Property Name="codAluno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="matricula" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="codPessoa" Type="Int32" />
+    <NavigationProperty Name="PESSOA" Relationship="Self.FK__ALUNO__codPessoa__2A4B4B5E" FromRole="ALUNO" ToRole="PESSOA" />
+  </EntityType>
+  <EntityType Name="ARQUIVO">
+    <Key>
+      <PropertyRef Name="codArquivo" />
+    </Key>
+    <Property Name="codArquivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="observacao" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="creditoAtividade" Type="Int32" />
+    <Property Name="arquivoDocumento" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="dtRealizada" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="matricula" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="aprovado" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="codAtividade" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ATIVIDADE">
+    <Key>
+      <PropertyRef Name="codAtividade" />
+    </Key>
+    <Property Name="valorCredito" Type="Int32" />
+    <Property Name="anoRegistro" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="codAtividade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipoAtividade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="codCat" Type="Int32" />
+    <Property Name="ativado" Type="Boolean" />
+    <Property Name="unidAvali" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CATEGORIA" Relationship="Self.FK__ATIVIDADE__codCa__25869641" FromRole="ATIVIDADE" ToRole="CATEGORIA" />
+  </EntityType>
+  <EntityType Name="CATEGORIA">
+    <Key>
+      <PropertyRef Name="codCat" />
+    </Key>
+    <Property Name="codCat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipoCat" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ATIVIDADE" Relationship="Self.FK__ATIVIDADE__codCa__25869641" FromRole="CATEGORIA" ToRole="ATIVIDADE" />
+  </EntityType>
+  <EntityType Name="PESSOA">
+    <Key>
+      <PropertyRef Name="codPessoa" />
+    </Key>
+    <Property Name="senha" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="codPessoa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="permissõesADM" Type="Boolean" />
+    <Property Name="telefone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ALUNO" Relationship="Self.FK__ALUNO__codPessoa__2A4B4B5E" FromRole="PESSOA" ToRole="ALUNO" />
+  </EntityType>
+  <Association Name="FK__ALUNO__codPessoa__2A4B4B5E">
+    <End Role="PESSOA" Type="Self.PESSOA" Multiplicity="0..1" />
+    <End Role="ALUNO" Type="Self.ALUNO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PESSOA">
+        <PropertyRef Name="codPessoa" />
+      </Principal>
+      <Dependent Role="ALUNO">
+        <PropertyRef Name="codPessoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATIVIDADE__codCa__25869641">
+    <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1" />
+    <End Role="ATIVIDADE" Type="Self.ATIVIDADE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIA">
+        <PropertyRef Name="codCat" />
+      </Principal>
+      <Dependent Role="ATIVIDADE">
+        <PropertyRef Name="codCat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDATCEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADICIONA" EntityType="Self.ADICIONA" />
+    <EntitySet Name="ALUNO" EntityType="Self.ALUNO" />
+    <EntitySet Name="ARQUIVO" EntityType="Self.ARQUIVO" />
+    <EntitySet Name="ATIVIDADE" EntityType="Self.ATIVIDADE" />
+    <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" />
+    <EntitySet Name="PESSOA" EntityType="Self.PESSOA" />
+    <AssociationSet Name="FK__ALUNO__codPessoa__2A4B4B5E" Association="Self.FK__ALUNO__codPessoa__2A4B4B5E">
+      <End Role="PESSOA" EntitySet="PESSOA" />
+      <End Role="ALUNO" EntitySet="ALUNO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATIVIDADE__codCa__25869641" Association="Self.FK__ATIVIDADE__codCa__25869641">
+      <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+      <End Role="ATIVIDADE" EntitySet="ATIVIDADE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

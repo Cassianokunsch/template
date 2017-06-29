@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDATCModelStoreContainer" CdmEntityContainer="BDATCEntities">
+    <EntitySetMapping Name="ADICIONA">
+      <EntityTypeMapping TypeName="BDATCModel.ADICIONA">
+        <MappingFragment StoreEntitySet="ADICIONA">
+          <ScalarProperty Name="codAtividade" ColumnName="codAtividade" />
+          <ScalarProperty Name="codPessoa" ColumnName="codPessoa" />
+          <ScalarProperty Name="codCat" ColumnName="codCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ALUNO">
+      <EntityTypeMapping TypeName="BDATCModel.ALUNO">
+        <MappingFragment StoreEntitySet="ALUNO">
+          <ScalarProperty Name="dtConclusao" ColumnName="dtConclusao" />
+          <ScalarProperty Name="creditos" ColumnName="creditos" />
+          <ScalarProperty Name="codAluno" ColumnName="codAluno" />
+          <ScalarProperty Name="matricula" ColumnName="matricula" />
+          <ScalarProperty Name="codPessoa" ColumnName="codPessoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARQUIVO">
+      <EntityTypeMapping TypeName="BDATCModel.ARQUIVO">
+        <MappingFragment StoreEntitySet="ARQUIVO">
+          <ScalarProperty Name="codArquivo" ColumnName="codArquivo" />
+          <ScalarProperty Name="observacao" ColumnName="observacao" />
+          <ScalarProperty Name="creditoAtividade" ColumnName="creditoAtividade" />
+          <ScalarProperty Name="arquivoDocumento" ColumnName="arquivoDocumento" />
+          <ScalarProperty Name="dtRealizada" ColumnName="dtRealizada" />
+          <ScalarProperty Name="matricula" ColumnName="matricula" />
+          <ScalarProperty Name="aprovado" ColumnName="aprovado" />
+          <ScalarProperty Name="codAtividade" ColumnName="codAtividade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ATIVIDADE">
+      <EntityTypeMapping TypeName="BDATCModel.ATIVIDADE">
+        <MappingFragment StoreEntitySet="ATIVIDADE">
+          <ScalarProperty Name="valorCredito" ColumnName="valorCredito" />
+          <ScalarProperty Name="anoRegistro" ColumnName="anoRegistro" />
+          <ScalarProperty Name="codAtividade" ColumnName="codAtividade" />
+          <ScalarProperty Name="tipoAtividade" ColumnName="tipoAtividade" />
+          <ScalarProperty Name="codCat" ColumnName="codCat" />
+          <ScalarProperty Name="ativado" ColumnName="ativado" />
+          <ScalarProperty Name="unidAvali" ColumnName="unidAvali" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATEGORIA">
+      <EntityTypeMapping TypeName="BDATCModel.CATEGORIA">
+        <MappingFragment StoreEntitySet="CATEGORIA">
+          <ScalarProperty Name="codCat" ColumnName="codCat" />
+          <ScalarProperty Name="tipoCat" ColumnName="tipoCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PESSOA">
+      <EntityTypeMapping TypeName="BDATCModel.PESSOA">
+        <MappingFragment StoreEntitySet="PESSOA">
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="codPessoa" ColumnName="codPessoa" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="permissõesADM" ColumnName="permissõesADM" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

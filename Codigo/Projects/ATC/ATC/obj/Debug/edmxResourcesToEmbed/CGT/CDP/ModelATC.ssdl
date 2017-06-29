@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDATCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ADICIONA">
+    <Key>
+      <PropertyRef Name="codAtividade" />
+      <PropertyRef Name="codPessoa" />
+      <PropertyRef Name="codCat" />
+    </Key>
+    <Property Name="codAtividade" Type="int" Nullable="false" />
+    <Property Name="codPessoa" Type="int" Nullable="false" />
+    <Property Name="codCat" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ALUNO">
+    <Key>
+      <PropertyRef Name="codAluno" />
+    </Key>
+    <Property Name="dtConclusao" Type="varchar" MaxLength="8" />
+    <Property Name="creditos" Type="int" />
+    <Property Name="codAluno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="matricula" Type="varchar" MaxLength="15" />
+    <Property Name="codPessoa" Type="int" />
+  </EntityType>
+  <EntityType Name="ARQUIVO">
+    <Key>
+      <PropertyRef Name="codArquivo" />
+    </Key>
+    <Property Name="codArquivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="observacao" Type="varchar" MaxLength="300" />
+    <Property Name="creditoAtividade" Type="int" />
+    <Property Name="arquivoDocumento" Type="varchar" MaxLength="300" />
+    <Property Name="dtRealizada" Type="varchar" MaxLength="8" />
+    <Property Name="matricula" Type="varchar" MaxLength="15" />
+    <Property Name="aprovado" Type="varchar" MaxLength="15" />
+    <Property Name="codAtividade" Type="int" />
+  </EntityType>
+  <EntityType Name="ATIVIDADE">
+    <Key>
+      <PropertyRef Name="codAtividade" />
+    </Key>
+    <Property Name="valorCredito" Type="int" />
+    <Property Name="anoRegistro" Type="varchar" MaxLength="8" />
+    <Property Name="codAtividade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipoAtividade" Type="varchar" MaxLength="100" />
+    <Property Name="codCat" Type="int" />
+    <Property Name="ativado" Type="bit" />
+    <Property Name="unidAvali" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="CATEGORIA">
+    <Key>
+      <PropertyRef Name="codCat" />
+    </Key>
+    <Property Name="codCat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipoCat" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="PESSOA">
+    <Key>
+      <PropertyRef Name="codPessoa" />
+    </Key>
+    <Property Name="senha" Type="varchar" MaxLength="30" />
+    <Property Name="codPessoa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="60" />
+    <Property Name="email" Type="varchar" MaxLength="60" />
+    <Property Name="permissõesADM" Type="bit" />
+    <Property Name="telefone" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <Association Name="FK__ALUNO__codPessoa__2A4B4B5E">
+    <End Role="PESSOA" Type="Self.PESSOA" Multiplicity="0..1" />
+    <End Role="ALUNO" Type="Self.ALUNO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PESSOA">
+        <PropertyRef Name="codPessoa" />
+      </Principal>
+      <Dependent Role="ALUNO">
+        <PropertyRef Name="codPessoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ATIVIDADE__codCa__25869641">
+    <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1" />
+    <End Role="ATIVIDADE" Type="Self.ATIVIDADE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIA">
+        <PropertyRef Name="codCat" />
+      </Principal>
+      <Dependent Role="ATIVIDADE">
+        <PropertyRef Name="codCat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDATCModelStoreContainer">
+    <EntitySet Name="ADICIONA" EntityType="Self.ADICIONA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ALUNO" EntityType="Self.ALUNO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ARQUIVO" EntityType="Self.ARQUIVO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ATIVIDADE" EntityType="Self.ATIVIDADE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PESSOA" EntityType="Self.PESSOA" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ALUNO__codPessoa__2A4B4B5E" Association="Self.FK__ALUNO__codPessoa__2A4B4B5E">
+      <End Role="PESSOA" EntitySet="PESSOA" />
+      <End Role="ALUNO" EntitySet="ALUNO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ATIVIDADE__codCa__25869641" Association="Self.FK__ATIVIDADE__codCa__25869641">
+      <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+      <End Role="ATIVIDADE" EntitySet="ATIVIDADE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
